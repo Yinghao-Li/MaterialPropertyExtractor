@@ -31,7 +31,7 @@ class Arguments:
         default='./models/pet-mm-model', metadata={'help': 'directory of NER model for material name detection'}
     )
     property_model_dir: Optional[str] = field(
-        default='./models/tg', metadata={'help': 'directory of NER model for property & value detection'}
+        default='', metadata={'help': 'directory of NER model for property & value detection'}
     )
     seqcx_model_dir: Optional[str] = field(
         default='', metadata={'help': 'sentence classification model directory'}
