@@ -1,0 +1,10 @@
+{
+    "train_file": "../data/train-fp/train.json",
+    "output_dir": "./output",
+    "bert_model_name_or_path": "distilbert-base-uncased",
+    "num_train_epochs": 5,
+    "max_length": 128,
+    "batch_size": 2,
+    "seed": 1,
+    "debug_mode": true
+}
