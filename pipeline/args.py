@@ -7,6 +7,10 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Arguments:
+    doi_file_path: str = field(
+        default='',
+        metadata={"help": "The path to the files containing the DOIs of the articles to download."}
+    )
     raw_article_dir: str = field(
         default='.',
         metadata={"help": "The path to the HTML/XML article file."}
@@ -38,6 +42,9 @@ class Arguments:
     )
     batch_size: Optional[int] = field(
         default=None, metadata={'help': 'model inference batch size. Leave None for original batch size'}
+    )
+    do_crawling: Optional[bool] = field(
+        default=False, metadata={'help': "Whether crawl data from the web"}
     )
     do_parsing: Optional[bool] = field(
         default=False, metadata={'help': 'Whether parse articles'}

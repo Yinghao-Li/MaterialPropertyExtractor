@@ -9,7 +9,7 @@ set -e
 RAW_ARTICLE_DIR="./data"
 PROCESSED_ARTICLE_DIR="./data_processed"
 EXTR_RESULT_DIR="./results/"
-KEYWORD_PATH="./dependency/keywords.json"
+KEYWORD_PATH="./dependency/tensile.json"
 BATCH_SIZE=128
 
 CUDA_VISIBLE_DEVICES=$1 python extr.py \

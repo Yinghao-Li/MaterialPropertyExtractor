@@ -132,4 +132,9 @@ dmypy.json
 .idea/
 .DS_Store
 
+*.html
+
+models/pet-mm-model/
+data/
+
 

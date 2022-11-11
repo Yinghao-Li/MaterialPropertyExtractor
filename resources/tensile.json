@@ -1,0 +1,13 @@
+{
+    "terms": [
+      "Tensile Strength",
+      "tensile strength",
+      "Tensile strength",
+      "Tensile modulus",
+      "tensile modulus",
+      "Tensile Modulus"
+    ],
+    "terms-pattern": [],
+    "units": [],
+    "units-pattern": ["[GMKk]Pa|N ?/ ?m ?(?:\\^)? ?2|k?psi|lb ?/ ?in ?(?:\\^)? ?2"]
+}

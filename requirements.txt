@@ -11,3 +11,5 @@ torch==1.10.0
 tqdm==4.64.0
 transformers==4.12.3
 xlsxwriter==3.0.3
+webdriver-manager==3.8.4
+selenium==4.6.0

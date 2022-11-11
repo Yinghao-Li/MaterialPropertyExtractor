@@ -6,6 +6,7 @@ from transformers import HfArgumentParser, set_seed
 from seqlbtoolkit.io import set_logging, logging_args
 
 from pipeline.args import Arguments
+from pipeline.crawler import crawl
 from pipeline.parser import parse
 from pipeline.heuristic_extractor import extract
 from pipeline.dataset_constructor import construct_dataset
@@ -14,6 +15,9 @@ logger = logging.getLogger(__name__)
 
 
 def process(args: Arguments):
+    if args.do_crawling:
+        logger.info("Start crawling webpages...")
+        crawl(args)
     if args.do_parsing:
         logger.info("Start parsing articles...")
         parse(args)
