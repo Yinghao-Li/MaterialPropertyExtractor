@@ -50,6 +50,6 @@ def parse(args: Arguments):
             torch.save(article, save_path)
 
         except Exception as e:
-            logger.exception(e)
+            logger.exception(f"Encounter exception {e} while parsing file {file_path}.")
 
     return None

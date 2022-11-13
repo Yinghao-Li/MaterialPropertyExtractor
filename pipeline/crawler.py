@@ -5,21 +5,24 @@ import random
 import logging
 from tqdm.auto import tqdm
 from typing import Optional
-from selenium.common.exceptions import TimeoutException
 from seqlbtoolkit.text import substring_mapping
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from chempp.constants import CHAR_TO_HTML_LBS
 from .utils import load_webdriver
 
 logger = logging.getLogger(__name__)
 
 
-def scroll_page(driver, height: Optional[int] = 720):
+def scroll_action(driver, height: Optional[int] = 720):
     """
     Scroll the webpage by height
+
     Parameters
     ----------
     driver: selenium driver
     height: height to scroll
+
     Returns
     -------
     None
@@ -31,14 +34,39 @@ def scroll_page(driver, height: Optional[int] = 720):
 def scroll_to_bottom(driver):
     """
     Scroll the webpage by height
+
     Parameters
     ----------
     driver: selenium driver
+
     Returns
     -------
     None
     """
     driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight);")
+    return None
+
+
+def scroll_page(driver, interval: Optional[float] = 0.1, height: Optional[int] = 1080):
+    """
+    Scroll the webpage so that it is fully loaded
+
+    Parameters
+    ----------
+    driver: selenium driver
+    interval: interval in second between each scroll action
+    height: height to scroll in each scroll action
+
+    Returns
+    -------
+    None
+    """
+    for t in range(round(random.uniform(2, 5))):
+        scroll_action(driver, height * (t + 1))
+        time.sleep(interval)
+
+    time.sleep(3 * interval)
+    scroll_to_bottom(driver)
     return None
 
 
@@ -61,8 +89,6 @@ def download_pages(dois: list,
     None
     """
     # Make sure the output directory exists
-    scroll_interval = 0.1
-    scroll_height = 1080
     os.makedirs(save_dir, exist_ok=True)
 
     failed_dois = list()
@@ -74,14 +100,18 @@ def download_pages(dois: list,
         try:
             driver.get(f"https://doi.org/{doi}")
 
-            time.sleep(2)
+            time.sleep(0.3)
+            scroll_page(driver)
 
-            for t in range(round(random.uniform(2, 5))):
-                scroll_page(driver, scroll_height * (t + 1))
-                time.sleep(scroll_interval)
+            if doi.startswith('10.1039'):
+                try:
+                    driver.find_element(By.LINK_TEXT, 'Article HTML').click()
 
-            time.sleep(2)
-            scroll_to_bottom(driver)
+                    time.sleep(0.3)
+                    scroll_page(driver)
+
+                except NoSuchElementException:
+                    pass
 
             # Parse page elements to get webpage links
             html_content = driver.page_source
