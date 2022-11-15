@@ -7,6 +7,8 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class Arguments:
+
+    # --- IO arguments ---
     doi_file_path: str = field(
         default='',
         metadata={"help": "The path to the files containing the DOIs of the articles to download."}
@@ -40,9 +42,8 @@ class Arguments:
     seqcx_model_dir: Optional[str] = field(
         default='', metadata={'help': 'sentence classification model directory'}
     )
-    batch_size: Optional[int] = field(
-        default=None, metadata={'help': 'model inference batch size. Leave None for original batch size'}
-    )
+
+    # --- task control arguments ---
     do_crawling: Optional[bool] = field(
         default=False, metadata={'help': "Whether crawl data from the web"}
     )
@@ -55,12 +56,18 @@ class Arguments:
     do_dataset_construction: Optional[bool] = field(
         default=False, metadata={'help': 'Whether construct dataset form the extraciton results'}
     )
+
+    # --- information extraction arguments ---
+    batch_size: Optional[int] = field(
+        default=None, metadata={'help': 'model inference batch size. Leave None for original batch size'}
+    )
     save_html: Optional[bool] = field(
         default=False, metadata={'help': 'Whether save HTML-formatted extraction results'}
     )
     save_jsonl: Optional[bool] = field(
         default=False, metadata={'help': 'Whether save JSONL-formatted extraction results'}
     )
+
     # --- dataset construction parameters ---
     valid_ratio: Optional[float] = field(
         default=0.15, metadata={'help': 'Ratio of validation instances'}
