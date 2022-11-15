@@ -18,4 +18,5 @@ The entry script is `./extr.py`.
 You can find an example of running the extraction pipeline in `./extr.sh`.
 Please remember to change the arguments to your specific data location.
 
+You can also find the same demo in the interactive jupyter notebook `./extr.ipynb`.
 
