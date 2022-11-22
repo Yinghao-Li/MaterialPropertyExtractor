@@ -138,5 +138,9 @@ dmypy.json
 
 models/pet-mm-model/
 data/
+test/
+test.ipynb
+
+
 
 
