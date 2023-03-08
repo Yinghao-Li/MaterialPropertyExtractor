@@ -1,0 +1,11 @@
+{
+    "data_dir": "./data/roe-pred/0/w_expr",
+    "output_dir": "./output/pred/0/w_expr",
+    "model_dir": "./output/pred/0/w_expr",
+    "batch_size": 256,
+    "n_epochs": 2000,
+    "lr": 0.0002,
+    "num_workers": 0,
+    "save_preds": true,
+    "overwrite_output": true
+}

@@ -73,6 +73,14 @@ class Arguments:
         default=False, metadata={"help": "Whether save test predicts into disk."}
     )
 
+    # --- Model Arguments ---
+    n_hidden_layers: Optional[int] = field(
+        default=8, metadata={'help': 'How many hidden layers are included in the model'}
+    )
+    d_hidden: Optional[int] = field(
+        default=512, metadata={'help': 'Hidden dimensionality'}
+    )
+
     # --- Device Arguments ---
     no_cuda: Optional[bool] = field(
         default=False, metadata={"help": "Disable CUDA even when it is available."}

@@ -77,9 +77,9 @@ class Dataset(BaseDataset):
                          "It must have `features` and `smiles` as keys.")
             raise exception
 
-        if isinstance(data_dict["targets"][0], (tuple, list)):
-            self._lbs = merge_list_of_lists(data_dict["targets"])
+        if isinstance(data_dict["lbs"][0], (tuple, list)):
+            self._lbs = merge_list_of_lists(data_dict["lb"])
         else:
-            self._lbs = data_dict["targets"]
+            self._lbs = data_dict["lbs"]
 
         return self
